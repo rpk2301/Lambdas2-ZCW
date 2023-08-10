@@ -1,7 +1,10 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PersonTest {
 
@@ -26,5 +29,15 @@ public class PersonTest {
         Person.Sex expected = Person.Sex.FEMALE;
         Person.Sex actual = p.getGender();
         Assert.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void checkPersonWithLocalClass()
+    {
+        List<Person> listofpeople = new ArrayList<>();
+        listofpeople.add(new Person("Joe Huntenberg", LocalDate.of(2010,Month.APRIL,24),
+                Person.Sex.MALE,"HiImJoe@aol.com"));
+        String expected = "Joe Huntenberg is 13 yeards old. They are a MALE. Find them at HiImJoe@aol.com";
+        Assert.assertEquals(expected,listofpeople.get(0).printPerson());
     }
 }

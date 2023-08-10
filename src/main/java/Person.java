@@ -9,7 +9,6 @@ public class Person {
     public enum Sex {
         MALE, FEMALE
     }
-
     String name;
 
     LocalDate birthday;
@@ -36,20 +35,27 @@ public class Person {
     }
 
     public void printPerson() {
+    String output = "%s is %d yeards old. They are a %s. Find them at %s";
+    String out =  String.format(output, name, getAge(),gender,emailAddress);
+    System.out.println(out);
 
     }
 
 
-    public static void printPerson(List<Person> roster, CheckPerson tester)
-    {
-        for (Person p : roster)
+    public static void printPerson(List<Person> roster, CheckPerson tester) {
+
+        for (Person p:roster)
         {
-            if (tester.test(p))
-            {
-                p.printPerson();
-            }
+        if(tester.test(p))
+        {
+            p.printPerson();
         }
+        }
+
     }
+
+
+
 
     public void setBirthday(int year, Month month, int DayOfMonth) {
         birthday = LocalDate.of(year,month,DayOfMonth);
@@ -59,7 +65,11 @@ public class Person {
         return gender;
     }
 
-    public void setGender(Sex gender) {
+    public void setGender(Sex gender)
+    {
         this.gender = gender;
     }
+
+
+
 }
